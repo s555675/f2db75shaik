@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  p  Generate Web pages on the server side using #{title}
+  button(type="button", class="btn btn-primary", onClick="dobump()") press Me 
+  
+  div(id="bump") Bump the count 
+
+  br 
+  a(class="btn btn-info" href="yogurt") yogurt's
+
+
+  script.
+    var count =0;
+    var bump=1;
+    function dobump(){
+      count+=bump;
+      bump+=1;
+      document.getElementById("bump").innerHTML = "count "+ count +" with bump "+ bump;  
+    } 
+ 
+
+
+

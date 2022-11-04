@@ -1,0 +1,18 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00B7FF;
+}
+h1 {
+  font-family: 'Tangerine', serif;
+  font-size: 88px;
+  text-shadow: 5px 4px 5px #aaa;
+}
+
+p {
+  font-family: 'Courier New', monospace;
+  font-size: 18px; 
+  text-align: centre;
+}

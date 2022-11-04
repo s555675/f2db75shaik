@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  - var image_names =  ["image_01", "image_02", "image_03", "image_04", "image_05"];
+  - for(let val=0; val < 3; val++) {
+        - let randval = Math.floor(Math.random()*5)
+        img(src=`/images/${image_names[randval]}.jpg`, alt="", height="300px", width="300px")
+  - }

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  - var results = [{"yogurt_flavour": "Blue berry", "calories": 10, "yogurt_size": "medium"},  {"yogurt_flavour": "Choclate", "calories": 23.4, "yogurt_size": "Rectangle"}, {"yogurt_flavour": "Strawberry", "calories": 23, "yogurt_size": "Square"}];
+  div(class="container-fluid")
+    div(class="row")
+        each items, index in results
+            div.col-sm-2(onclick=`buy(${index})`) yogurt_flavour: #{items["yogurt_flavour"]} <br> calories:  #{items["calories"]} <br>yogurt_size:  #{items["yogurt_size"]}
+  
+  script. 
+    function buy(index) {
+        alert("You purchased item " + index + ".")
+    }
+ 
+  
