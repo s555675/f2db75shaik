@@ -24,3 +24,28 @@ exports.yogurt_delete = function(req, res) {
 exports.yogurt_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: yogurt update PUT' + req.params.id); 
 }; 
+
+// List of all Costumes 
+exports.yogurt_list = async function(req, res) { 
+    try{ 
+        theYogurts = await yogurt.find(); 
+        res.send(theYogurts); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
+
+// VIEWS 
+// Handle a show all view 
+exports.yogurt_view_all_Page = async function(req, res) { 
+    try{ 
+        theYogurts = await yogurt.find(); 
+        res.render('yogurt', { title: 'Yogurt Search Results', Yogurtresults: theYogurts }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 

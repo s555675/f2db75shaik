@@ -1,10 +1,7 @@
-var express = require('express');
-var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('yogurt', { title: 'search results yogurt' });
-});
-
-
-module.exports = router;
+var express = require('express'); 
+const yogurt_controlers= require('../controllers/yogurt');
+var router = express.Router(); 
+ 
+/* GET yogurts */ 
+router.get('/', yogurt_controlers.yogurt_view_all_Page ); 
+module.exports = router; 

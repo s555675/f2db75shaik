@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var results = [{"yogurt_flavour": "Blue berry", "calories": 10, "yogurt_size": "medium"},  {"yogurt_flavour": "Choclate", "calories": 23.4, "yogurt_size": "Rectangle"}, {"yogurt_flavour": "Strawberry", "calories": 23, "yogurt_size": "Square"}];
+  - var results = Yogurtresults
   div(class="container-fluid")
     div(class="row")
         each items, index in results
