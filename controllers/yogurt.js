@@ -17,9 +17,9 @@ exports.yogurt_create_post = async function(req, res) {
     // We are looking for a body, since POST does not have query parameters. 
     // Even though bodies can be in many different formats, we will be picky 
     // and require that it be a json object 
-    document.yogurt_type = req.body.yogurt_type; 
-    document.cost = req.body.cost; 
-    document.size = req.body.size; 
+    document.yogurt_flavour = req.body.yogurt_flavour; 
+    document.calories = req.body.calories; 
+    document.yogurt_size = req.body.yogurt_size; 
     try{ 
         let result = await document.save(); 
         res.send(result); 
