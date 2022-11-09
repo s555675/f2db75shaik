@@ -10,9 +10,24 @@ exports.yogurt_detail = function(req, res) {
     res.send('NOT IMPLEMENTED: yogurt detail: ' + req.params.id); 
 }; 
  
-// Handle yogurt create on POST. 
-exports.yogurt_create_post = function(req, res) { 
-    res.send('NOT IMPLEMENTED: yogurt create POST'); 
+// Handle Yogurt create on POST. 
+exports.yogurt_create_post = async function(req, res) { 
+    console.log(req.body) 
+    let document = new yogurt(); 
+    // We are looking for a body, since POST does not have query parameters. 
+    // Even though bodies can be in many different formats, we will be picky 
+    // and require that it be a json object 
+    document.yogurt_type = req.body.yogurt_type; 
+    document.cost = req.body.cost; 
+    document.size = req.body.size; 
+    try{ 
+        let result = await document.save(); 
+        res.send(result); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
 }; 
  
 // Handle yogurt delete form on DELETE. 
@@ -25,7 +40,7 @@ exports.yogurt_update_put = function(req, res) {
     res.send('NOT IMPLEMENTED: yogurt update PUT' + req.params.id); 
 }; 
 
-// List of all Costumes 
+// List of all yogurts 
 exports.yogurt_list = async function(req, res) { 
     try{ 
         theYogurts = await yogurt.find(); 
