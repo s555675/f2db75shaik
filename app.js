@@ -23,7 +23,7 @@ var usersRouter = require('./routes/users');
 var yogurtRouter = require('./routes/yogurt');
 var gridbuildRouter = require('./routes/gridbuild');
 var selectorRouter = require('./routes/selector');
-
+var resourceRouter = require('./routes/resources');
 
 var app = express();
 
@@ -42,7 +42,7 @@ app.use('/users', usersRouter);
 app.use('/yogurt', yogurtRouter);
 app.use('/gridbuild', gridbuildRouter);
 app.use('/selector', selectorRouter);
-
+app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
