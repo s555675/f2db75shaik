@@ -6,9 +6,16 @@ exports.yogurt_list = function(req, res) {
 }; 
  
 // for a specific yogurt. 
-exports.yogurt_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: yogurt detail: ' + req.params.id); 
-}; 
+exports.yogurt_detail = async function(req, res) { 
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await yogurt.findById( req.params.id) 
+        res.send(result) 
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
+};
  
 // Handle Yogurt create on POST. 
 exports.yogurt_create_post = async function(req, res) { 
@@ -36,8 +43,23 @@ exports.yogurt_delete = function(req, res) {
 }; 
  
 // Handle yogurt update form on PUT. 
-exports.yogurt_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: yogurt update PUT' + req.params.id); 
+exports.yogurt_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await yogurt.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.yogurt_flavour)  
+               toUpdate.yogurt_list = req.body.yogurt_flavour; 
+        if(req.body.yogurt_size) toUpdate.yogurt_size = req.body.yogurt_size; 
+        if(req.body.calories) toUpdate.calories = req.body.calories; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`); 
+    } 
 }; 
 
 // List of all yogurts 
