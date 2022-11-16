@@ -40,10 +40,10 @@ exports.yogurt_create_post = async function(req, res) {
 // Handle yogurt delete form on DELETE. 
 exports.yogurt_delete = function(req, res) { 
     res.send('NOT IMPLEMENTED: yogurt delete DELETE ' + req.params.id); 
-    exports.costume_delete = async function(req, res) { 
+    exports.yogurt_delete = async function(req, res) { 
         console.log("delete "  + req.params.id) 
         try { 
-            result = await Costume.findByIdAndDelete( req.params.id) 
+            result = await yogurt.findByIdAndDelete( req.params.id) 
             console.log("Removed " + result) 
             res.send(result) 
         } catch (err) { 
