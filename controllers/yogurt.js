@@ -88,10 +88,10 @@ exports.yogurt_list = async function(req, res) {
 exports.yogurt_view_all_Page = async function(req, res) { 
     try{ 
         theYogurts = await yogurt.find(); 
-        res.render('yogurt', { title: 'Yogurt Search Results', Yogurtresults: theYogurts }); 
+        res.render('yogurt', { title: 'Yogurt Search Results', results: theYogurts }); 
     } 
     catch(err){ 
         res.status(500); 
         res.send(`{"error": ${err}}`); 
     }   
-};  
+}; 
