@@ -4,4 +4,5 @@ var router = express.Router();
  
 /* GET yogurts */ 
 router.get('/', yogurt_controlers.yogurt_view_all_Page ); 
+
 module.exports = router; 
