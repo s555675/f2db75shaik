@@ -38,9 +38,8 @@ exports.yogurt_create_post = async function(req, res) {
 }; 
  
 // Handle yogurt delete form on DELETE. 
-exports.yogurt_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: yogurt delete DELETE ' + req.params.id); 
-    exports.yogurt_delete = async function(req, res) { 
+exports.yogurt_delete =async function(req, res) { 
+   
         console.log("delete "  + req.params.id) 
         try { 
             result = await yogurt.findByIdAndDelete( req.params.id) 
@@ -50,7 +49,7 @@ exports.yogurt_delete = function(req, res) {
             res.status(500) 
             res.send(`{"error": Error deleting ${err}}`); 
         } 
-    };
+    
 }; 
  
 // Handle yogurt update form on PUT. 
