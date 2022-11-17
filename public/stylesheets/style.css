@@ -16,3 +16,8 @@ p {
   font-size: 18px; 
   text-align: centre;
 }
+
+.yogurtAttr { 
+  background-color: aquamarine; 
+  width: 120px; 
+} 

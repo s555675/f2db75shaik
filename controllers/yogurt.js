@@ -50,6 +50,19 @@ exports.yogurt_delete = async function(req, res) {
     } 
     
 }; 
+
+// Handle a show one view with id specified by query 
+exports.yogurt_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await yogurt.findById( req.query.id) 
+        res.render('yogurtdetail',  { title: 'Yogurt Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
  
 // Handle yogurt update form on PUT. 
 exports.yogurt_update_put = async function(req, res) { 
@@ -95,3 +108,45 @@ exports.yogurt_view_all_Page = async function(req, res) {
         res.send(`{"error": ${err}}`); 
     }   
 } 
+
+// Handle building the view for creating a yogurt. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.yogurt_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('yogurtcreate', { title: 'Yogurt Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}
+// Handle building the view for updating a yogurt. 
+// query provides the id 
+exports.yogurt_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await yogurt.findById(req.query.id) 
+        res.render('yogurtupdate', { title: 'Yogurt Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+
+// Handle a delete one view with id from query 
+exports.yogurt_delete_Page = async function(req, res) { 
+    console.log("Delete view for id "  + req.query.id) 
+    try{ 
+        result = await yogurt.findById(req.query.id) 
+        res.render('yogurtdelete', { title: 'Yogurt Delete', toShow: 
+result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ 

@@ -1,0 +1,26 @@
+extends layout 
+ 
+block content 
+  h1= title 
+
+
+   if (toShow == null)
+    h2 No instance to update 
+ 
+  - let yogurtid = toShow._id 
+  - let yogurt_flavour = toShow.yogurt_flavour
+  - let calories = toShow.calories 
+  - let yogurt_size = toShow.yogurt_size 
+  div 
+    div.row 
+      div(class='yogurtAttr mr-3') Yogurt ID is: 
+      div #{yogurtid} 
+    div.row 
+      div(class='yogurtAttr mr-3') Yogurt Flavour is: 
+      div #{yogurt_flavour} 
+    div.row 
+      div(class='yogurtAttr mr-3') Yogurt Calories are: 
+      div #{calories} 
+    div.row 
+      div(class='yogurtAttr mr-3') Yogurt Size is: 
+      div #{yogurt_size} 

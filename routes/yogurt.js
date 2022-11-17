@@ -6,3 +6,16 @@ var router = express.Router();
 router.get('/', yogurt_controlers.yogurt_view_all_Page ); 
 
 module.exports = router; 
+
+/* GET detail yogurt page */ 
+router.get('/detail', yogurt_controlers.yogurt_view_one_Page); 
+
+/* GET create yogurt page */ 
+router.get('/create', yogurt_controlers.yogurt_create_Page); 
+
+/* GET create update page */ 
+router.get('/update', yogurt_controlers.yogurt_update_Page); 
+
+/* GET delete yogurt page */ 
+router.get('/delete', yogurt_controlers.yogurt_delete_Page); 
+ 
