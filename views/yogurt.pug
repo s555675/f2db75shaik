@@ -4,12 +4,15 @@ block content
   h1= title
   - var results = Yogurtresults
   div(class="container-fluid")
-    div(class="row")
+    div(class="row m-1")
         each items, index in results
+        -let destination = 'dispatch(\"/costumes/update?id=${item._id}\")'
             div.col-sm-2(onclick=`buy(${index})`) yogurt_flavour: #{items["yogurt_flavour"]} <br> calories:  #{items["calories"]} <br>yogurt_size:  #{items["yogurt_size"]}
+            button.btn( class="btn-primary ml-1", onclick= destination) Update 
   
   script. 
-    function buy(index) {
+    function dispatch(path) {
+      window.location.href=path 
         alert("You purchased item " + index + ".")
     }
  
