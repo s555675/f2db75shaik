@@ -5,8 +5,6 @@ var router = express.Router();
 /* GET yogurts */ 
 router.get('/', yogurt_controlers.yogurt_view_all_Page ); 
 
-module.exports = router; 
-
 /* GET detail yogurt page */ 
 router.get('/detail', yogurt_controlers.yogurt_view_one_Page); 
 
@@ -19,3 +17,7 @@ router.get('/update', yogurt_controlers.yogurt_update_Page);
 /* GET delete yogurt page */ 
 router.get('/delete', yogurt_controlers.yogurt_delete_Page); 
  
+
+module.exports = router; 
+
+

@@ -3,45 +3,45 @@ extends layout
 block content 
     h1= title         
     
-   if (toShow == null)
+    if (toShow == null)
       h2 no instance to update 
-  else 
- - let yogurtid = toShow._id 
-  - let yogurt_flavour = toShow.yogurt_flavour
-  - let calories = toShow.calories 
-  - let yogurt_size = toShow.yogurt_size 
+    else 
+      - let yogurtid = toShow._id 
+      - let yogurt_flavour = toShow.yogurt_flavour
+      - let calories = toShow.calories 
+      - let yogurt_size = toShow.yogurt_size 
    
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{yogurtid} 
-  - let actionid = "/resource/yogurt/" + yogurtid 
-  form(id='YogurtForm', action= actionid, method="PUT") 
-    div.form-group 
-        label.yogurtAttr(for='yogurt_flavour') yogurt_flavour 
-        input#yogurt_flavour(type='text', name='yogurt_flavour', value= yogurt_flavour ) 
-    div.form-group 
-        label.yogurtAttr(for='calories') calories
-        input#calories(type='number', name='calories', value= calories ) 
-    div.form-group 
-        label.yogurtAttr(for='yogurt_size') yogurt_size
-        input#yogurt_size(type='text', name='yogurt_size', value= yogurt_size ) 
-    input(type="submit") 
+    div.row(class='mb-2') 
+       div.mr-1 ID is 
+       div #{yogurtid} 
+       - let actionid = "/resource/yogurt/" + yogurtid 
+       form(id='YogurtForm', action= actionid, method="PUT") 
+            div.form-group 
+                label.yogurtAttr(for='yogurt_flavour') yogurt_flavour 
+                input#yogurt_flavour(type='text', name='yogurt_flavour', value=`${yogurt_flavour}`) 
+            div.form-group 
+                label.yogurtAttr(for='calories') calories
+                input#calories(type='number', name='calories', value=`${calories}`) 
+            div.form-group 
+                label.yogurtAttr(for='yogurt_size') yogurt_size
+                input#yogurt_size(type='text', name='yogurt_size', value=`${yogurt_size}`) 
+            input(type="submit") 
  
-  script. 
-    document.forms['YogurtForm'].addEventListener('submit', (event) => { 
-      event.preventDefault(); 
-      // TODO do something here to show user that form is being submitted 
-      fetch(event.target.action, { 
-        method: 'PUT', 
-        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
-      }).then((resp) => { 
-        return resp.json(); // or resp.text() or whatever the server sends 
-      }).then((body) => { 
-        alert("Update succeded") 
-        // TODO handle body 
-      }).catch((error) => { 
-        // TODO handle error 
-        alert("Update failed " + error ) 
-      }); 
-    }); 
+    script. 
+        document.forms['YogurtForm'].addEventListener('submit', (event) => { 
+           event.preventDefault(); 
+           // TODO do something here to show user that form is being submitted 
+           fetch(event.target.action, { 
+                method: 'PUT', 
+                body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+            }).then((resp) => { 
+                return resp.json(); // or resp.text() or whatever the server sends 
+            }).then((body) => { 
+                alert("Update succeded") 
+                // TODO handle body 
+            }).catch((error) => { 
+                // TODO handle error 
+                alert("Update failed " + error ) 
+            }); 
+        }); 
  
