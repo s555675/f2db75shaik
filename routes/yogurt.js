@@ -16,16 +16,16 @@ const secured = (req, res, next) => {
 router.get('/', yogurt_controlers.yogurt_view_all_Page ); 
 
 /* GET detail yogurt page */ 
-router.get('/detail', yogurt_controlers.yogurt_view_one_Page); 
+router.get('/detail',secured, yogurt_controlers.yogurt_view_one_Page); 
 
 /* GET create yogurt page */ 
-router.get('/create', yogurt_controlers.yogurt_create_Page); 
+router.get('/create', secured, yogurt_controlers.yogurt_create_Page); 
 
 /* GET create update page */ 
 router.get('/update', secured, yogurt_controlers.yogurt_update_Page); 
 
 /* GET delete yogurt page */ 
-router.get('/delete', yogurt_controlers.yogurt_delete_Page); 
+router.get('/delete', secured, yogurt_controlers.yogurt_delete_Page); 
  
 
 module.exports = router; 

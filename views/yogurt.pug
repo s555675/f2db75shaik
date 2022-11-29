@@ -2,13 +2,16 @@ extends layout
 
 block content
   h1= title
+  button.btn(class="btn-primary ml-1", onclick= `dispatch(\"/yogurt/create\")`) Create
   - var results = results
   div(class="container-fluid")
     div(class="row m-1")
         each items, index in results
             - let destination = `dispatch(\"/yogurt/update/?id=${items._id}\")`
             div.col-sm-2(onclick=`buy(${index})`) yogurt_flavour: #{items["yogurt_flavour"]} <br> calories:  #{items["calories"]} <br>yogurt_size:  #{items["yogurt_size"]}
-            button.btn(class="btn-primary ml-1", onclick= destination) Update 
+            button.btn(class="btn-success ml-1", onclick= `dispatch(\"/yogurt/view/?id=${items._id}\")`) View 
+            button.btn(class="btn-warning ml-1", onclick= `dispatch(\"/yogurt/update/?id=${items._id}\")`) Update 
+            button.btn(class="btn-danger ml-1", onclick= `dispatch(\"/yogurt/delete/?id=${items._id}\")`) Delete
   
   script. 
     function dispatch(path) {
