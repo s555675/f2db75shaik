@@ -45,6 +45,7 @@ app.use(require('express-session')({
 })); 
 app.use(passport.initialize()); 
 app.use(passport.session()); 
+ 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
@@ -61,7 +62,7 @@ var Account =require('./models/account');
  
 passport.use(new LocalStrategy(Account.authenticate())); 
 passport.serializeUser(Account.serializeUser()); 
-passport.deserializeUser(Account.deserializeUser()); 
+passport.deserializeUser(Account.deserializeUser());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
